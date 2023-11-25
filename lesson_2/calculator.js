@@ -1,3 +1,6 @@
+// at the top of the file
+
+const MESSAGES = require('./calculator_messages.json');
 const readline = require('readline-sync');
 
 function prompt(message) {
@@ -8,8 +11,9 @@ function invalidNumber(number) {
   return number.trimStart() === '' || Number.isNaN(Number(number));
 }
 
-prompt('Welcome to Calculator!');
+prompt(MESSAGES['welcome']);
 
+while (true){
 prompt("What's the first number?");
 let number1 = readline.question();
 
@@ -51,3 +55,12 @@ switch (operation) {
 }
 
 prompt(`The result is: ${output}`);
+
+
+prompt("Do you want to perform another calculation?\n Press (Y) if you do.");
+let answer = readline.question();
+
+if (answer[0].toLowerCase() !== 'y') break;
+
+}
+
